@@ -11,6 +11,7 @@ import os
 import subprocess
 import tempfile
 import urllib.request, urllib.error
+import unicodedata
 from glob import glob
 from collections import Counter
 from PIL import Image, ImageChops
@@ -21,6 +22,10 @@ from zoneinfo import ZoneInfo
 
 PNG_RENDER_DPI = 600
 PNG_PAGE_JOIN_GAP_MM = 4.5
+PNG_PAGE_CONTENT_PADDING_PX = 8
+PNG_CONTINUATION_CROP_PADDING_MM = 1.5
+LOGO_REGISTRY_FILENAME = '球队队徽库.json'
+
 
 todayTime = datetime.now(ZoneInfo('Asia/Shanghai')).strftime("%Y-%m-%d")
 baseurl  = "https://dongqiudi.com/api/data/tab/league/new/index?start="+todayTime+"14:17:04&init=1&platform=www"  #要爬取的网页链接
@@ -75,7 +80,129 @@ def latex_escape(text):
         '~': r'\textasciitilde{}', '^': r'\textasciicircum{}',
     }
     return ''.join(replacements.get(char, char) for char in text)
+def normalized_team_name(team):
+    """统一全半角、大小写与分隔符，供队徽别名匹配使用。"""
+    normalized = unicodedata.normalize('NFKC', str(team)).casefold()
+    return ''.join(char for char in normalized if char.isalnum())
 
+def load_logo_registry():
+    """读取可扩展的队徽库，并区分国家队及赛事徽标别名。"""
+    script_dir = os.path.dirname(os.path.abspath(__file__)) if '__file__' in globals() else os.getcwd()
+    registry_path = os.path.join(script_dir, LOGO_REGISTRY_FILENAME)
+    try:
+        with open(registry_path, encoding='utf-8') as registry_file:
+            registry = json.load(registry_file)
+    except OSError as error:
+        raise FileNotFoundError('未找到队徽库：%s' % registry_path) from error
+    except json.JSONDecodeError as error:
+        raise ValueError('队徽库 JSON 格式错误：%s' % error) from error
+
+    raw_clubs = registry.get('clubs')
+    if raw_clubs is None:
+        competitions = registry.get('competitions')
+        if not isinstance(competitions, dict):
+            raise ValueError('队徽库缺少 competitions 对象。')
+        clubs = []
+        for competition_name, competition in competitions.items():
+            if not isinstance(competition, dict) or not isinstance(competition.get('clubs'), list):
+                raise ValueError('队徽库中的每个分区都必须包含 clubs 数组。')
+            clubs.extend((club, competition_name == 'national_teams') for club in competition['clubs'])
+    else:
+        if not isinstance(raw_clubs, list):
+            raise ValueError('队徽库中的 clubs 必须是数组。')
+        clubs = [(club, False) for club in raw_clubs]
+
+    aliases = []
+    football_national_aliases = []
+    for club, is_national_team in clubs:
+        if not isinstance(club, dict) or not isinstance(club.get('logo'), str):
+            raise ValueError('队徽库中的每个俱乐部都必须包含 logo。')
+        for alias in club.get('aliases', ()):
+            if not isinstance(alias, str) or not normalized_team_name(alias):
+                raise ValueError('队徽库中的 aliases 必须是非空字符串。')
+            aliases.append((normalized_team_name(alias), club['logo']))
+        if is_national_team:
+            for alias in club.get('football_only_aliases', ()):
+                if not isinstance(alias, str) or not normalized_team_name(alias):
+                    raise ValueError('国家队的 football_only_aliases 必须是非空字符串。')
+                football_national_aliases.append((normalized_team_name(alias), club['logo']))
+
+    event_logo_aliases = []
+    event_logos = registry.get('event_logos', ())
+    if not isinstance(event_logos, list):
+        raise ValueError('队徽库中的 event_logos 必须是数组。')
+    for event_logo in event_logos:
+        if not isinstance(event_logo, dict) or not isinstance(event_logo.get('logo'), str):
+            raise ValueError('赛事徽标必须包含 logo。')
+        for keyword in event_logo.get('keywords', ()):
+            if not isinstance(keyword, str) or not normalized_team_name(keyword):
+                raise ValueError('赛事徽标的 keywords 必须是非空字符串。')
+            event_logo_aliases.append((normalized_team_name(keyword), event_logo['logo']))
+
+    tennis_player_aliases = []
+    tennis_players = registry.get('tennis_players', ())
+    if not isinstance(tennis_players, list):
+        raise ValueError('队徽库中的 tennis_players 必须是数组。')
+    for player in tennis_players:
+        if not isinstance(player, dict) or not isinstance(player.get('portrait'), str):
+            raise ValueError('网球运动员必须包含 portrait。')
+        for alias in player.get('aliases', ()):
+            if not isinstance(alias, str) or not normalized_team_name(alias):
+                raise ValueError('网球运动员的 aliases 必须是非空字符串。')
+            tennis_player_aliases.append((normalized_team_name(alias), player['portrait']))
+    return (tuple(sorted(aliases, key=lambda item: len(item[0]), reverse=True)),
+            tuple(sorted(football_national_aliases, key=lambda item: len(item[0]), reverse=True)),
+            tuple(sorted(event_logo_aliases, key=lambda item: len(item[0]), reverse=True)),
+            tuple(sorted(tennis_player_aliases, key=lambda item: len(item[0]), reverse=True)))
+
+LOGO_ALIASES, FOOTBALL_NATIONAL_ALIASES, EVENT_LOGO_ALIASES, TENNIS_PLAYER_ALIASES = load_logo_registry()
+def is_football_national_event(event):
+    """仅在可明确判定为足球的国家队赛事中启用裸国家名。"""
+    event = str(event).replace('\\/', '/')
+    if contains_any(event, ('篮球', '男篮', '女篮')):
+        return False
+    return contains_any(event, ('世界杯', '世预赛', '欧洲杯', '欧国联', '美洲杯', '麒麟杯', '足球', '男足', '女足'))
+def is_tennis_event(event):
+    """仅在网球赛事中以运动员立绘替换队徽位置。"""
+    return contains_any(event, tuple(RULES['tennis']['keywords']) + ('ATP', 'WTA'))
+
+def latex_team_name(team, event='', compact=False):
+    """为球队附加队徽；网球赛事中的已收录运动员使用对应立绘。"""
+    escaped_team = latex_escape(team)
+    normalized_team = normalized_team_name(team)
+    if is_tennis_event(event):
+        for alias, portrait_path in TENNIS_PLAYER_ALIASES:
+            if alias in normalized_team:
+                macro = 'CompactPlayerWithPortrait' if compact else 'PlayerWithPortrait'
+                return r'\%s{logo/%s}{%s}' % (macro, portrait_path, escaped_team)
+    for alias, logo_path in LOGO_ALIASES:
+        if alias in normalized_team:
+            return r'\ClubWithLogo{logo/%s}{%s}' % (logo_path, escaped_team)
+    if is_football_national_event(event):
+        for alias, logo_path in FOOTBALL_NATIONAL_ALIASES:
+            if alias == normalized_team:
+                return r'\ClubWithLogo{logo/%s}{%s}' % (logo_path, escaped_team)
+    return escaped_team
+
+def event_logo_path(event):
+    """按赛事名返回赛事徽标路径；英文缩写使用完整词边界匹配。"""
+    normalized_event = normalized_team_name(event)
+    for keyword, logo_path in EVENT_LOGO_ALIASES:
+        if keyword.isascii() and keyword.isalnum():
+            if re.search(r'(?<![a-z0-9])%s(?![a-z0-9])' % re.escape(keyword), normalized_event):
+                return logo_path
+        elif keyword in normalized_event:
+            return logo_path
+    return ''
+
+def latex_event_name(event, compact=False):
+    """在可识别赛事标题前放置对应的实色赛事徽标。"""
+    escaped_event = latex_escape(event)
+    logo_path = event_logo_path(event)
+    if not logo_path:
+        return escaped_event
+    macro = 'CompactEventTitleWithLogo' if compact else 'EventTitleWithLogo'
+    return r'\%s{logo/%s}{%s}' % (macro, logo_path, escaped_event)
 def match_datetime(match_time):
     try:
         return datetime.strptime(match_time, '%Y-%m-%d %H:%M:%S')
@@ -361,7 +488,7 @@ def make_result_cards(matches):
     """昨日赛果以双栏卡片排版；焦点由卡片样式而非文字区分。"""
     cards = []
     for event, _, host, score, guest in matches:
-        values = [latex_escape(value) for value in (event, host, score, guest)]
+        values = [latex_event_name(event), latex_team_name(host, event), latex_escape(score), latex_team_name(guest, event)]
         cards.append(r'\FocusResultMatch{%s}{%s}{%s}{%s}' % tuple(values))
     return make_card_grid(cards)
 
@@ -369,7 +496,7 @@ def make_compact_rows(matches, command):
     """非重点赛事共享一个外框，内部采用双栏紧凑行。"""
     rows = []
     for event, match_time, host, score, guest in matches:
-        values = [latex_escape(value) for value in (event, host, score, guest)]
+        values = [latex_event_name(event, compact=True), latex_team_name(host, event, compact=True), latex_escape(score), latex_team_name(guest, event, compact=True)]
         if command == 'OtherResultRow':
             row = r'\OtherResultRow{%s}{%s}{%s}{%s}' % tuple(values)
         else:
@@ -387,14 +514,14 @@ def make_compact_rows(matches, command):
     return '\n'.join(lines)
 
 def make_preview_day(title, matches, selected_focus=None):
-    """焦点比赛逐项呈现，其他已知时间赛事合并为一个列表卡片。"""
+    """每个比赛日期只显示一次标题，避免跨页重复。"""
     if not matches:
         return ''
     if selected_focus is None:
         focus_matches, other_matches, _ = split_display_matches(matches)
     else:
         focus_matches, other_matches = partition_by_selected(matches, selected_focus)
-    lines = [r'\PreviewDay{%s}' % title]
+    lines = [r'\PreviewDay{%s}' % latex_escape(title)]
     lines.append(make_focus_schedule_cards(focus_matches))
     if other_matches:
         if focus_matches:
@@ -405,7 +532,7 @@ def make_preview_day(title, matches, selected_focus=None):
 def make_focus_schedule_cards(matches):
     cards = []
     for event, match_time, host, _, guest in matches:
-        values = [latex_escape(value) for value in (event, host, guest)]
+        values = [latex_event_name(event), latex_team_name(host, event), latex_team_name(guest, event)]
         display_time = preview_display_time(event, match_time)
         cards.append(r'\FocusScheduleMatch{%s}{%s}{%s}{%s}' %
                      (values[0], display_time, values[1], values[2]))
@@ -503,7 +630,7 @@ def compile_daily_report(project_dir):
         subprocess.run(command, cwd=project_dir, check=True)
     print('Save as PDF:', os.path.join(pdf_dir, 'football_daily_report.pdf'))
 
-def content_crop_box(image, padding=8):
+def content_crop_box(image, padding=PNG_PAGE_CONTENT_PADDING_PX):
     """计算页面内容的裁切范围，同时保留少量安全边距。"""
     rgb_image = image.convert('RGB')
     difference = ImageChops.difference(rgb_image, Image.new('RGB', rgb_image.size, 'white'))
@@ -515,7 +642,7 @@ def content_crop_box(image, padding=8):
             min(rgb_image.width, right + padding), min(rgb_image.height, bottom + padding))
 
 def remove_repeated_page_header(image):
-    """合并长图时裁掉后续页面重复的页眉及其红色横线。"""
+    """裁掉重复页眉，并返回裁后图像及首行正文前实际保留的像素距离。"""
     rgb_image = image.convert('RGB')
     difference = ImageChops.difference(rgb_image, Image.new('RGB', rgb_image.size, 'white'))
     mask = difference.convert('L').point(lambda value: 255 if value > 12 else 0)
@@ -528,14 +655,17 @@ def remove_repeated_page_header(image):
         if red_pixels >= rule_threshold:
             header_rule_bottom = row + 1
 
-    start_row = max(header_rule_bottom + 1, round(rgb_image.height * 0.12))
+    if not header_rule_bottom:
+        return rgb_image, 0
+    start_row = header_rule_bottom + 1
     activity_threshold = max(3, rgb_image.width // 100)
+    safety_padding = round(PNG_RENDER_DPI * PNG_CONTINUATION_CROP_PADDING_MM / 25.4)
     for row in range(start_row, round(rgb_image.height * 0.35)):
         activity = sum(mask.crop((0, row, rgb_image.width, min(row + 4, rgb_image.height))).histogram()[1:])
         if activity >= activity_threshold:
-            return rgb_image.crop((0, max(header_rule_bottom + 1, row - 8), rgb_image.width, rgb_image.height))
-    return rgb_image
-
+            crop_start = max(start_row, row - safety_padding)
+            return rgb_image.crop((0, crop_start, rgb_image.width, rgb_image.height)), row - crop_start
+    return rgb_image, 0
 def stack_pages_vertically(pages, gap_pixels=0):
     """按阅读顺序拼接已裁边的页面，并保留统一的页间距。"""
     target_width = pages[0].width
@@ -583,12 +713,16 @@ def export_report_pngs(project_dir):
             cropped_pages.append(cropped_page)
 
     combined_pages = list(cropped_pages)
+    continuation_padding_pixels = 0
     if len(combined_pages) > 1:
         original_height = combined_pages[1].height
-        combined_pages[1] = remove_repeated_page_header(combined_pages[1]).convert('RGBA')
-        print('Removed repeated page header: %dpx -> %dpx.' %
-              (original_height, combined_pages[1].height))
-    join_gap_pixels = round(PNG_RENDER_DPI * PNG_PAGE_JOIN_GAP_MM / 25.4)
+        cropped_continuation, continuation_padding_pixels = remove_repeated_page_header(combined_pages[1])
+        combined_pages[1] = cropped_continuation.convert('RGBA')
+        print('Removed repeated page header: %dpx -> %dpx; preserved top padding: %dpx.' %
+              (original_height, combined_pages[1].height, continuation_padding_pixels))
+    # 用实际保留的顶部安全距离反向补偿拼接空白，保持总视觉距离与原版一致。
+    join_gap_pixels = max(0, round(PNG_RENDER_DPI * PNG_PAGE_JOIN_GAP_MM / 25.4)
+                          + PNG_PAGE_CONTENT_PADDING_PX - continuation_padding_pixels)
     combined = stack_pages_vertically(combined_pages, join_gap_pixels)
     combined_path = os.path.join(png_dir, 'football_daily_report_combined.png')
     combined.save(combined_path)

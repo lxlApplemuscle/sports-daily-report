@@ -1,0 +1,287 @@
+{
+  "schema_version": 2,
+  "description": "队徽文件相对于 logo/ 目录。按赛事或类别分区；新增球队时，在对应 clubs 数组加入图片路径和 aliases。",
+  "event_logos": [
+    {"id":"premier-league","logo":"premier league/england_english-premier-league_3000x3000.football-logos.cc.png","keywords":["英超","Premier League"]},
+    {"id":"la-liga","logo":"laliga primera/spain_la-liga_3000x3000.football-logos.cc.png","keywords":["西甲","La Liga"]},
+    {"id":"bundesliga","logo":"Bundesliga/germany_bundesliga_3000x3000.football-logos.cc.png","keywords":["德甲","Bundesliga"]},
+    {"id":"serie-a","logo":"Serie A/italy_serie-a_3000x3000.football-logos.cc.png","keywords":["意甲","Serie A"]},
+    {"id":"ligue-1","logo":"Ligue 1/france_ligue-1_3000x3000.football-logos.cc.png","keywords":["法甲","Ligue 1"]},
+    {"id":"chinese-super-league","logo":"Chinese Super League/china_chinese-super-league_3000x3000.football-logos.cc.png","keywords":["中超","Chinese Super League"]},
+    {"id":"major-league-soccer","logo":"Major League Soccer/usa_mls_3000x3000.football-logos.cc.png","keywords":["美职联","MLS"]},
+    {"id":"brazilian-serie-a","logo":"Brazilian Serie A/brazil_brazilian-serie-a_3000x3000.football-logos.cc.png","keywords":["巴甲","巴西甲","Brazilian Serie A"]},
+    {"id":"primeira-liga","logo":"Primeira Liga/portugal_primeira-liga_3000x3000.football-logos.cc.png","keywords":["葡超","Primeira Liga"]},
+    {"id":"super-lig","logo":"Süper Lig/turkey_super-lig_3000x3000.football-logos.cc.png","keywords":["土超","Super Lig","Süper Lig"]},
+    {"id":"uefa-champions-league","logo":"Tournament/tournaments_uefa-champions-league_3000x3000.football-logos.cc.png","keywords":["欧冠","欧洲冠军联赛","UEFA Champions League"]},
+    {"id":"uefa-europa-league","logo":"Tournament/tournaments_uefa-europa-league_3000x3000.football-logos.cc.png","keywords":["欧联","欧罗巴联赛","UEFA Europa League"]},
+    {"id":"nba","logo":"NBA/_national_basketball_association_logo_primary_20182722.png","keywords":["NBA"]},
+    {"id":"cba-logo","logo":"CBA/cba_logo.png","keywords":["CBA"]},
+    {"id":"china-open","logo":"Tennis/中网.png","keywords":["中网","中国网球公开赛","China Open"]},
+    {"id":"australian-open","logo":"Tennis/澳网.png","keywords":["澳网","澳大利亚网球公开赛","Australian Open"]},
+    {"id":"french-open","logo":"Tennis/法网.png","keywords":["法网","法国网球公开赛","French Open","Roland Garros"]},
+    {"id":"wimbledon","logo":"Tennis/温网.png","keywords":["温网","温布尔登","温布尔登网球锦标赛","Wimbledon"]},
+    {"id":"atp-finals","logo":"Tennis/ATP_final.png","keywords":["ATP年终总决赛","ATP总决赛","ATP Finals","ATP Final"]},
+    {"id":"wta-finals","logo":"Tennis/WTA_final.png","keywords":["WTA年终总决赛","WTA总决赛","WTA Finals","WTA Final"]}
+  ],
+  "tennis_players": [
+    {"id":"carlos-alcaraz","portrait":"Tennis/ATP/alcaraz_full_2024.png","aliases":["阿尔卡拉斯","Carlos Alcaraz"]},
+    {"id":"felix-auger-aliassime","portrait":"Tennis/ATP/auger-aliassime_full_2026_1.png","aliases":["阿利亚西姆","奥热-阿利亚西姆","Felix Auger-Aliassime","Félix Auger-Aliassime"]},
+    {"id":"novak-djokovic","portrait":"Tennis/ATP/djokovic_full_2026.png","aliases":["德约科维奇","诺瓦克·德约科维奇","Novak Djokovic"]},
+    {"id":"daniil-medvedev","portrait":"Tennis/ATP/medvedev_full_2026.png","aliases":["梅德韦杰夫","梅德维德夫","Daniil Medvedev"]},
+    {"id":"ben-shelton","portrait":"Tennis/ATP/shelton_full_2025.png","aliases":["谢尔顿","Ben Shelton"]},
+    {"id":"jannik-sinner","portrait":"Tennis/ATP/sinner_full_2026.png","aliases":["辛纳","扬尼克·辛纳","Jannik Sinner"]},
+    {"id":"wu-yibing","portrait":"Tennis/ATP/yibing_full_2026.png","aliases":["吴易昺","Wu Yibing"]},
+    {"id":"buyunchaokete","portrait":"Tennis/ATP/yunchaokete_full_2026.png","aliases":["布云朝克特","布云朝克特·凯尔迪别克","Buyunchaokete"]},
+    {"id":"zhang-zhizhen","portrait":"Tennis/ATP/zhang_full_2026.png","aliases":["张之臻","Zhang Zhizhen"]},
+    {"id":"alexander-zverev","portrait":"Tennis/ATP/zverev_full_2026.png","aliases":["兹维列夫","亚历山大·兹维列夫","Alexander Zverev"]},
+    {"id":"coco-gauff","portrait":"Tennis/WTA/Gauff-Torso_328560_portrait.png","aliases":["高芙","可可·高芙","Coco Gauff"]},
+    {"id":"elena-rybakina","portrait":"Tennis/WTA/Rybakina-Torso_324166_portrait.png","aliases":["莱巴金娜","叶连娜·莱巴金娜","Elena Rybakina"]},
+    {"id":"aryna-sabalenka","portrait":"Tennis/WTA/Sabalenka-Torso_320760_portrait.png","aliases":["萨巴伦卡","阿丽娜·萨巴伦卡","Aryna Sabalenka"]},
+    {"id":"iga-swiatek","portrait":"Tennis/WTA/Swiatek-Torso_326408_portrait.png","aliases":["施瓦泰克","斯瓦泰克","斯维亚特克","Iga Swiatek","Iga Świątek"]},
+    {"id":"wang-xinyu","portrait":"Tennis/WTA/Wang-Xin-Torso_326376_portrait.png","aliases":["王欣瑜","Wang Xinyu"]},
+    {"id":"zheng-qinwen","portrait":"Tennis/WTA/Zheng-Torso_328120_portrait.png","aliases":["郑钦文","Qinwen Zheng"]}
+  ],
+  "competitions": {
+    "premier_league": {
+      "name": "英格兰足球超级联赛",
+      "clubs": [
+        {"id":"arsenal","logo":"premier league/01-Arsenal-FC-v2002.png","aliases":["阿森纳","Arsenal","Arsenal FC"]},
+        {"id":"aston-villa","logo":"premier league/02-Aston-Villa-Football-Club-v2024.png","aliases":["阿斯顿维拉","维拉","Aston Villa","Aston Villa FC"]},
+        {"id":"bournemouth","logo":"premier league/03-AFC-Bournemouth-v2013.png","aliases":["伯恩茅斯","Bournemouth","AFC Bournemouth"]},
+        {"id":"brentford","logo":"premier league/04-Brentford-Football-Club-v2017.png","aliases":["布伦特福德","Brentford","Brentford FC"]},
+        {"id":"brighton","logo":"premier league/05-Brighton-Hove-Albion-v2011.png","aliases":["布莱顿","布莱顿霍夫","Brighton","Brighton & Hove Albion"]},
+        {"id":"chelsea","logo":"premier league/06-chelsea-football-club-v2026.png","aliases":["切尔西","Chelsea","Chelsea FC"]},
+        {"id":"coventry-city","logo":"premier league/07-coventry-city-football-club-v2012.png","aliases":["考文垂","考文垂城","Coventry","Coventry City"]},
+        {"id":"crystal-palace","logo":"premier league/08-Crystal-Palace-Football-Club-v2022.png","aliases":["水晶宫","Crystal Palace","Crystal Palace FC"]},
+        {"id":"everton","logo":"premier league/09-Everton-Football-Club-v2014.png","aliases":["埃弗顿","Everton","Everton FC"]},
+        {"id":"fulham","logo":"premier league/10-Fulham-Football-Club-v2001.png","aliases":["富勒姆","Fulham","Fulham FC"]},
+        {"id":"hull-city","logo":"premier league/11-hull-city-association-football-club-v2014.png","aliases":["赫尔城","Hull City","Hull City AFC"]},
+        {"id":"ipswich-town","logo":"premier league/12-Ipswich-Town-Football-Club-v1995.png","aliases":["伊普斯维奇","伊普斯维奇城","Ipswich","Ipswich Town"]},
+        {"id":"leeds-united","logo":"premier league/13-Leeds-United-v2002.png","aliases":["利兹联","Leeds","Leeds United"]},
+        {"id":"liverpool","logo":"premier league/14-Liverpool-Football-Club-v2024-minor.png","aliases":["利物浦","Liverpool","Liverpool FC"]},
+        {"id":"manchester-city","logo":"premier league/15-Manchester-City-v2016.png","aliases":["曼彻斯特城","曼城","Manchester City","Man City"]},
+        {"id":"manchester-united","logo":"premier league/16-Manchester-United-Football-Club-v1998.png","aliases":["曼彻斯特联","曼联","Manchester United","Man United","Man Utd"]},
+        {"id":"newcastle-united","logo":"premier league/17-Newcastle-United-Football-Club-v1988.png","aliases":["纽卡斯尔联","纽卡斯尔","Newcastle","Newcastle United"]},
+        {"id":"nottingham-forest","logo":"premier league/18-Nottingham-Forest-Football-Club-v2010.png","aliases":["诺丁汉森林","Nottingham Forest"]},
+        {"id":"sunderland","logo":"premier league/19-Sunderland-AFC-v1997.png","aliases":["桑德兰","Sunderland","Sunderland AFC"]},
+        {"id":"tottenham-hotspur","logo":"premier league/20-Tottenham-Hotspur-Football-Club-v2024.png","aliases":["托特纳姆热刺","热刺","Tottenham","Tottenham Hotspur","Spurs"]}
+      ]
+    },
+    "la_liga": {
+      "name": "西班牙足球甲级联赛",
+      "clubs": [
+        {"id":"real-madrid","logo":"laliga primera/01-Real-Madrid-CF-v2002.png","aliases":["皇家马德里","皇马","Real Madrid","Real Madrid CF"]},
+        {"id":"atletico-madrid","logo":"laliga primera/02-Atletico-Madrid-v2024.png","aliases":["马德里竞技","马竞","Atlético Madrid","Atletico Madrid"]},
+        {"id":"athletic-club","logo":"laliga primera/03-Athletic-Club-Bilbao-v2008.png","aliases":["毕尔巴鄂竞技","毕尔巴鄂","Athletic Club","Athletic Bilbao"]},
+        {"id":"deportivo-alaves","logo":"laliga primera/04-Deportivo-Alaves-v2020.png","aliases":["阿拉维斯","Deportivo Alavés","Deportivo Alaves","Alavés","Alaves"]},
+        {"id":"barcelona","logo":"laliga primera/05-FC-Barcelona-v2002.png","aliases":["巴塞罗那","巴萨","FC Barcelona","Barcelona"]},
+        {"id":"celta-vigo","logo":"laliga primera/06-RC-Celta-de-Vigo-v2010.png","aliases":["塞尔塔","维戈塞尔塔","RC Celta de Vigo","Celta Vigo"]},
+        {"id":"girona","logo":"laliga primera/07-Girona-Futbol-Club-v2021.png","aliases":["赫罗纳","Girona","Girona FC"]},
+        {"id":"espanyol","logo":"laliga primera/08-RCD-Espanyol-v2005.png","aliases":["西班牙人","RCD Espanyol","Espanyol"]},
+        {"id":"las-palmas","logo":"laliga primera/09-UD-Las-Palmas-v2011.png","aliases":["拉斯帕尔马斯","UD Las Palmas","Las Palmas"]},
+        {"id":"leganes","logo":"laliga primera/10-Club-Deportivo-Leganes-v2014.png","aliases":["莱加内斯","CD Leganés","CD Leganes","Leganés","Leganes"]},
+        {"id":"getafe","logo":"laliga primera/11-Getafe-Club-de-Futbol-v2011.png","aliases":["赫塔菲","Getafe CF","Getafe"]},
+        {"id":"mallorca","logo":"laliga primera/12-Real-Club-Deportivo-Mallorca-v1996.png","aliases":["马略卡","皇家马略卡","RCD Mallorca","Mallorca"]},
+        {"id":"osasuna","logo":"laliga primera/13-Club-Atletico-Osasuna-v2004.png","aliases":["奥萨苏纳","CA Osasuna","Osasuna"]},
+        {"id":"rayo-vallecano","logo":"laliga primera/14-Rayo-Vallecano-de-Madrid-v2012.png","aliases":["巴列卡诺","Rayo Vallecano"]},
+        {"id":"real-betis","logo":"laliga primera/15-Real-Betis-v2022.png","aliases":["皇家贝蒂斯","贝蒂斯","Real Betis","Betis"]},
+        {"id":"real-sociedad","logo":"laliga primera/16-Real-Sociedad-de-Futbol-v1997.png","aliases":["皇家社会","Real Sociedad"]},
+        {"id":"sevilla","logo":"laliga primera/17-Sevilla-Futbol-Club-v1995.png","aliases":["塞维利亚","Sevilla","Sevilla FC"]},
+        {"id":"valencia","logo":"laliga primera/18-Valencia-Club-de-Futbol-v2012.png","aliases":["瓦伦西亚","Valencia","Valencia CF"]},
+        {"id":"real-valladolid","logo":"laliga primera/19-Real-Valladolid-Club-de-Futbol-v2024.png","aliases":["巴拉多利德","皇家巴拉多利德","Real Valladolid"]},
+        {"id":"villarreal","logo":"laliga primera/20-Villarreal-Club-de-Futbol-v2009.png","aliases":["比利亚雷亚尔","黄潜","Villarreal","Villarreal CF"]},
+        {"id":"deportivo-la-coruna","logo":"laliga primera/spain_deportivo-la-coruna_3000x3000.football-logos.cc.png","aliases":["拉科鲁尼亚","拉科","Deportivo La Coruña","Deportivo La Coruna"]},
+        {"id":"elche","logo":"laliga primera/spain_elche_3000x3000.football-logos.cc.png","aliases":["埃尔切","Elche","Elche CF"]},
+        {"id":"levante","logo":"laliga primera/spain_levante_3000x3000.football-logos.cc.png","aliases":["莱万特","Levante","Levante UD"]},
+        {"id":"malaga","logo":"laliga primera/spain_malaga_3000x3000.football-logos.cc.png","aliases":["马拉加","Málaga","Malaga","Málaga CF","Malaga CF"]},
+        {"id":"racing-santander","logo":"laliga primera/spain_racing_3000x3000.football-logos.cc.png","aliases":["桑坦德竞技","Racing Santander","Racing de Santander"]}
+      ]
+    },
+    "chinese_super_league": {
+      "name": "中国足球超级联赛及已收录中国俱乐部",
+      "clubs": [
+        {"id":"beijing-guoan","logo":"Chinese Super League/china_beijing-guoan_3000x3000.football-logos.cc.png","aliases":["北京国安","北京国安足球俱乐部","Beijing Guoan"]},
+        {"id":"chengdu-rongcheng","logo":"Chinese Super League/china_chengdu-rongcheng_3000x3000.football-logos.cc.png","aliases":["成都蓉城","成都蓉城足球俱乐部","Chengdu Rongcheng"]},
+        {"id":"chongqing-tonglianglong","logo":"Chinese Super League/china_chongqing-tonglianglong_3000x3000.football-logos.cc.png","aliases":["重庆铜梁龙","Chongqing Tonglianglong"]},
+        {"id":"dalian-yingbo","logo":"Chinese Super League/china_dalian-yingbo_3000x3000.football-logos.cc.png","aliases":["大连英博","大连英博足球俱乐部","Dalian Yingbo"]},
+        {"id":"henan","logo":"Chinese Super League/china_henan-songshan-longmen_3000x3000.football-logos.cc.png","aliases":["河南队","河南足球俱乐部","河南嵩山龙门","Henan FC","Henan Songshan Longmen"]},
+        {"id":"liaoning-tieren","logo":"Chinese Super League/china_liaoning-tiening_3000x3000.football-logos.cc.png","aliases":["辽宁铁人","辽宁铁人足球俱乐部","Liaoning Tieren","Liaoning Tiening"]},
+        {"id":"qingdao-hainiu","logo":"Chinese Super League/china_qingdao-hainiu_3000x3000.football-logos.cc.png","aliases":["青岛海牛","青岛海牛足球俱乐部","Qingdao Hainiu"]},
+        {"id":"qingdao-west-coast","logo":"Chinese Super League/china_qingdao-west-coast_3000x3000.football-logos.cc.png","aliases":["青岛西海岸","青岛西海岸足球俱乐部","Qingdao West Coast"]},
+        {"id":"shandong-taishan","logo":"Chinese Super League/china_shandong-taishan_3000x3000.football-logos.cc.png","aliases":["山东泰山","山东泰山足球俱乐部","Shandong Taishan"]},
+        {"id":"shanghai-port","logo":"Chinese Super League/china_shanghai-port_3000x3000.football-logos.cc.png","aliases":["上海海港","上海上港","上海海港足球俱乐部","Shanghai Port","Shanghai SIPG"]},
+        {"id":"shanghai-shenhua","logo":"Chinese Super League/china_shanghai-shenhua_3000x3000.football-logos.cc.png","aliases":["上海申花","上海申花足球俱乐部","Shanghai Shenhua"]},
+        {"id":"shenzhen-peng-city","logo":"Chinese Super League/china_shenzhen-xinpengcheng_3000x3000.football-logos.cc.png","aliases":["深圳新鹏城","深圳新鹏城足球俱乐部","Shenzhen Peng City","Shenzhen Xinpengcheng"]},
+        {"id":"tianjin-jinmen-tiger","logo":"Chinese Super League/china_tianjin-jinmen-tiger_3000x3000.football-logos.cc.png","aliases":["天津津门虎","天津津门虎足球俱乐部","Tianjin Jinmen Tiger"]},
+        {"id":"wuhan-three-towns","logo":"Chinese Super League/china_wuhan-three-towns_3000x3000.football-logos.cc.png","aliases":["武汉三镇","武汉三镇足球俱乐部","Wuhan Three Towns"]},
+        {"id":"yunnan-yukun","logo":"Chinese Super League/china_yunnan-yukun_3000x3000.football-logos.cc.png","aliases":["云南玉昆","云南玉昆足球俱乐部","Yunnan Yukun"]},
+        {"id":"zhejiang","logo":"Chinese Super League/china_zhejiang-professional_3000x3000.football-logos.cc.png","aliases":["浙江队","浙江职业","浙江足球俱乐部","Zhejiang FC","Zhejiang Professional"]}
+      ]
+    },
+    "national_teams": {
+      "name": "国家队",
+      "clubs": [
+        {"id":"china-national-football-team","logo":"National/china_china-national-team_3000x3000.football-logos.cc.png","aliases":["中国男足","中国国家男子足球队","中国足球国家队","国足","China PR","China national football team"],"football_only_aliases":["中国"]},
+        {"id":"england-national-football-team","logo":"National/england_england-national-team_3000x3000.football-logos.cc.png","aliases":["英格兰男足","英格兰国家男子足球队","England national football team","England men national team","Three Lions"],"football_only_aliases":["英格兰"]},
+        {"id":"spain-national-football-team","logo":"National/spain_spain-national-team_3000x3000.football-logos.cc.png","aliases":["西班牙男足","西班牙国家男子足球队","Spain national football team","Spain men national team","La Roja"],"football_only_aliases":["西班牙"]},
+        {"id":"argentina-national-football-team","logo":"National/argentina_argentina-national-team_3000x3000.football-logos.cc.png","aliases":["阿根廷男足","阿根廷国家男子足球队","Argentina national football team","Argentina men national team","La Albiceleste"],"football_only_aliases":["阿根廷"]},
+        {"id":"brazil-national-football-team","logo":"National/brazil_brazil-national-team_3000x3000.football-logos.cc.png","aliases":["巴西男足","巴西国家男子足球队","Brazil national football team","Brazil men national team","Selecao"],"football_only_aliases":["巴西"]},
+        {"id":"france-national-football-team","logo":"National/france_france-national-team_3000x3000.football-logos.cc.png","aliases":["法国男足","法国国家男子足球队","France national football team","France men national team","Les Bleus"],"football_only_aliases":["法国"]},
+        {"id":"germany-national-football-team","logo":"National/germany_germany-national-team_3000x3000.football-logos.cc.png","aliases":["德国男足","德国国家男子足球队","Germany national football team","Germany men national team","Die Mannschaft"],"football_only_aliases":["德国"]},
+        {"id":"italy-national-football-team","logo":"National/italy_italy-national-team_3000x3000.football-logos.cc.png","aliases":["意大利男足","意大利国家男子足球队","Italy national football team","Italy men national team","Azzurri"],"football_only_aliases":["意大利"]},
+        {"id":"portugal-national-football-team","logo":"National/portugal_portuguese-football-federation_3000x3000.football-logos.cc.png","aliases":["葡萄牙男足","葡萄牙国家男子足球队","Portugal national football team","Portugal men national team","Selecao das Quinas"],"football_only_aliases":["葡萄牙"]},
+        {"id":"usa-national-football-team","logo":"National/usa_usa-national-team_3000x3000.football-logos.cc.png","aliases":["美国男足","美国国家男子足球队","United States national football team","USA national football team","USMNT"],"football_only_aliases":["美国"]}
+      ]
+    },
+    "bundesliga": {
+      "name": "德国足球甲级联赛",
+      "clubs": [
+        {"id":"augsburg","logo":"Bundesliga/germany_augsburg_3000x3000.football-logos.cc.png","aliases":["奥格斯堡","Augsburg","FC Augsburg"]},
+        {"id":"bayer-leverkusen","logo":"Bundesliga/germany_bayer-leverkusen_3000x3000.football-logos.cc.png","aliases":["勒沃库森","Bayer Leverkusen","Bayer 04 Leverkusen"]},
+        {"id":"bayern-munich","logo":"Bundesliga/germany_bayern-munchen_3000x3000.football-logos.cc.png","aliases":["拜仁慕尼黑","拜仁","Bayern Munich","Bayern Munchen"]},
+        {"id":"borussia-dortmund","logo":"Bundesliga/germany_borussia-dortmund_3000x3000.football-logos.cc.png","aliases":["多特蒙德","Borussia Dortmund","Dortmund"]},
+        {"id":"borussia-monchengladbach","logo":"Bundesliga/germany_borussia-monchengladbach_3000x3000.football-logos.cc.png","aliases":["门兴格拉德巴赫","门兴","Borussia Monchengladbach","Borussia Mönchengladbach"]},
+        {"id":"eintracht-frankfurt","logo":"Bundesliga/germany_eintracht-frankfurt_3000x3000.football-logos.cc.png","aliases":["法兰克福","Eintracht Frankfurt","Frankfurt"]},
+        {"id":"freiburg","logo":"Bundesliga/germany_freiburg_3000x3000.football-logos.cc.png","aliases":["弗赖堡","Freiburg","SC Freiburg"]},
+        {"id":"hamburger-sv","logo":"Bundesliga/germany_hamburger-sv_3000x3000.football-logos.cc.png","aliases":["汉堡","Hamburger SV","Hamburg"]},
+        {"id":"hoffenheim","logo":"Bundesliga/germany_hoffenheim_3000x3000.football-logos.cc.png","aliases":["霍芬海姆","Hoffenheim","TSG Hoffenheim"]},
+        {"id":"koln","logo":"Bundesliga/germany_koln_3000x3000.football-logos.cc.png","aliases":["科隆","Koln","Köln","FC Koln","1. FC Koln"]},
+        {"id":"mainz-05","logo":"Bundesliga/germany_mainz-05_3000x3000.football-logos.cc.png","aliases":["美因茨","美因茨05","Mainz","Mainz 05"]},
+        {"id":"paderborn","logo":"Bundesliga/germany_paderborn_3000x3000.football-logos.cc.png","aliases":["帕德博恩","Paderborn","SC Paderborn"]},
+        {"id":"rb-leipzig","logo":"Bundesliga/germany_rb-leipzig_3000x3000.football-logos.cc.png","aliases":["RB莱比锡","莱比锡","RB Leipzig","RasenBallsport Leipzig"]},
+        {"id":"schalke-04","logo":"Bundesliga/germany_schalke-04_3000x3000.football-logos.cc.png","aliases":["沙尔克04","沙尔克","Schalke 04","Schalke"]},
+        {"id":"sv-elversberg","logo":"Bundesliga/germany_sv-elversberg_3000x3000.football-logos.cc.png","aliases":["艾禾斯堡","Elversberg","SV Elversberg"]},
+        {"id":"union-berlin","logo":"Bundesliga/germany_union-berlin_3000x3000.football-logos.cc.png","aliases":["柏林联合","Union Berlin","1. FC Union Berlin"]},
+        {"id":"vfb-stuttgart","logo":"Bundesliga/germany_vfb-stuttgart_3000x3000.football-logos.cc.png","aliases":["斯图加特","VfB Stuttgart","Stuttgart"]},
+        {"id":"werder-bremen","logo":"Bundesliga/germany_werder-bremen_3000x3000.football-logos.cc.png","aliases":["云达不莱梅","不莱梅","Werder Bremen"]}
+      ]
+    },
+    "serie_a": {
+      "name": "意大利足球甲级联赛",
+      "clubs": [
+        {"id":"atalanta","logo":"Serie A/italy_atalanta_3000x3000.football-logos.cc.png","aliases":["亚特兰大","Atalanta"]},
+        {"id":"bologna","logo":"Serie A/italy_bologna_3000x3000.football-logos.cc.png","aliases":["博洛尼亚","Bologna"]},
+        {"id":"cagliari","logo":"Serie A/italy_cagliari_3000x3000.football-logos.cc.png","aliases":["卡利亚里","Cagliari"]},
+        {"id":"como-1907","logo":"Serie A/italy_como-1907_3000x3000.football-logos.cc.png","aliases":["科莫","Como","Como 1907"]},
+        {"id":"fiorentina","logo":"Serie A/italy_fiorentina_3000x3000.football-logos.cc.png","aliases":["佛罗伦萨","Fiorentina"]},
+        {"id":"frosinone","logo":"Serie A/italy_frosinone_3000x3000.football-logos.cc.png","aliases":["弗罗西诺内","Frosinone"]},
+        {"id":"genoa","logo":"Serie A/italy_genoa_3000x3000.football-logos.cc.png","aliases":["热那亚","Genoa"]},
+        {"id":"inter-milan","logo":"Serie A/italy_inter_3000x3000.football-logos.cc.png","aliases":["国际米兰","Inter Milan","Internazionale"]},
+        {"id":"juventus","logo":"Serie A/italy_juventus_3000x3000.football-logos.cc.png","aliases":["尤文图斯","尤文","Juventus"]},
+        {"id":"lazio","logo":"Serie A/italy_lazio_3000x3000.football-logos.cc.png","aliases":["拉齐奥","Lazio"]},
+        {"id":"lecce","logo":"Serie A/italy_lecce_3000x3000.football-logos.cc.png","aliases":["莱切","Lecce"]},
+        {"id":"ac-milan","logo":"Serie A/italy_milan_3000x3000.football-logos.cc.png","aliases":["AC米兰","AC Milan","Milan"]},
+        {"id":"monza","logo":"Serie A/italy_monza_3000x3000.football-logos.cc.png","aliases":["蒙扎","Monza"]},
+        {"id":"napoli","logo":"Serie A/italy_napoli_3000x3000.football-logos.cc.png","aliases":["那不勒斯","Napoli"]},
+        {"id":"parma","logo":"Serie A/italy_parma_3000x3000.football-logos.cc.png","aliases":["帕尔马","Parma"]},
+        {"id":"roma","logo":"Serie A/italy_roma_3000x3000.football-logos.cc.png","aliases":["罗马","AS Roma","Roma"]},
+        {"id":"sassuolo","logo":"Serie A/italy_sassuolo_3000x3000.football-logos.cc.png","aliases":["萨索洛","Sassuolo"]},
+        {"id":"torino","logo":"Serie A/italy_torino_3000x3000.football-logos.cc.png","aliases":["都灵","Torino"]},
+        {"id":"udinese","logo":"Serie A/italy_udinese_3000x3000.football-logos.cc.png","aliases":["乌迪内斯","Udinese"]},
+        {"id":"venezia","logo":"Serie A/italy_venezia_3000x3000.football-logos.cc.png","aliases":["威尼斯","Venezia"]}
+      ]
+    },
+    "ligue_1": {
+      "name": "法国足球甲级联赛",
+      "clubs": [
+        {"id":"as-monaco","logo":"Ligue 1/france_as-monaco_3000x3000.football-logos.cc.png","aliases":["摩纳哥","AS Monaco","Monaco"]},
+        {"id":"lille","logo":"Ligue 1/france_lille_3000x3000.football-logos.cc.png","aliases":["里尔","Lille","LOSC Lille"]},
+        {"id":"lyon","logo":"Ligue 1/france_lyon_3000x3000.football-logos.cc.png","aliases":["里昂","Lyon","Olympique Lyonnais"]},
+        {"id":"paris-saint-germain","logo":"Ligue 1/france_paris-saint-germain_3000x3000.football-logos.cc.png","aliases":["巴黎圣日耳曼","巴黎","Paris Saint-Germain","PSG"]},
+        {"id":"rennes","logo":"Ligue 1/france_rennes_3000x3000.football-logos.cc.png","aliases":["雷恩","Rennes","Stade Rennais"]}
+      ]
+    },
+    "major_league_soccer": {
+      "name": "美国职业足球大联盟",
+      "clubs": [
+        {"id":"inter-miami","logo":"Major League Soccer/usa_inter-miami-cf_3000x3000.football-logos.cc.png","aliases":["迈阿密国际","Inter Miami","Inter Miami CF"]},
+        {"id":"la-galaxy","logo":"Major League Soccer/usa_la-galaxy_3000x3000.football-logos.cc.png","aliases":["洛杉矶银河","LA Galaxy","Los Angeles Galaxy"]}
+      ]
+    },
+    "brazilian_serie_a": {
+      "name": "巴西足球甲级联赛",
+      "clubs": [
+        {"id":"botafogo","logo":"Brazilian Serie A/brazil_botafogo_3000x3000.football-logos.cc.png","aliases":["博塔弗戈","Botafogo"]},
+        {"id":"flamengo","logo":"Brazilian Serie A/brazil_flamengo_3000x3000.football-logos.cc.png","aliases":["弗拉门戈","Flamengo"]},
+        {"id":"fluminense","logo":"Brazilian Serie A/brazil_fluminense_3000x3000.football-logos.cc.png","aliases":["弗鲁米嫩塞","Fluminense"]},
+        {"id":"palmeiras","logo":"Brazilian Serie A/brazil_palmeiras_3000x3000.football-logos.cc.png","aliases":["帕尔梅拉斯","Palmeiras"]}
+      ]
+    },
+    "primeira_liga": {
+      "name": "葡萄牙足球超级联赛",
+      "clubs": [
+        {"id":"benfica","logo":"Primeira Liga/portugal_benfica_3000x3000.football-logos.cc.png","aliases":["本菲卡","Benfica"]},
+        {"id":"fc-porto","logo":"Primeira Liga/portugal_fc-porto_3000x3000.football-logos.cc.png","aliases":["波尔图","FC Porto","Porto"]},
+        {"id":"sporting-cp","logo":"Primeira Liga/portugal_sporting-cp_3000x3000.football-logos.cc.png","aliases":["葡萄牙体育","里斯本竞技","Sporting CP","Sporting Lisbon"]}
+      ]
+    },
+    "super_lig": {
+      "name": "土耳其足球超级联赛",
+      "clubs": [
+        {"id":"besiktas","logo":"Süper Lig/turkey_besiktas_3000x3000.football-logos.cc.png","aliases":["贝西克塔斯","Besiktas","Beşiktaş"]},
+        {"id":"fenerbahce","logo":"Süper Lig/turkey_fenerbahce_3000x3000.football-logos.cc.png","aliases":["费内巴切","Fenerbahce","Fenerbahçe"]},
+        {"id":"galatasaray","logo":"Süper Lig/turkey_galatasaray_3000x3000.football-logos.cc.png","aliases":["加拉塔萨雷","Galatasaray"]},
+        {"id":"trabzonspor","logo":"Süper Lig/turkey_trabzonspor_3000x3000.football-logos.cc.png","aliases":["特拉布宗体育","Trabzonspor"]}
+      ]
+    },
+    "cba": {
+      "name": "中国男子篮球职业联赛",
+      "clubs": [
+        {"id":"beijing-royal-fighters","logo":"CBA/北京控股.png","aliases":["北京控股","北京北控","北京紫禁勇士"]},
+        {"id":"beijing-ducks","logo":"CBA/北京首钢.png","aliases":["北京首钢","北京首钢篮球俱乐部"]},
+        {"id":"fujian-sturgeons","logo":"CBA/福建晋江文旅.png","aliases":["福建晋江文旅","福建浔兴","福建豹发力"]},
+        {"id":"guangdong-southern-tigers","logo":"CBA/广东东阳光.png","aliases":["广东东阳光","广东宏远","广东华南虎"]},
+        {"id":"guangzhou-loong-lions","logo":"CBA/广州龙狮.png","aliases":["广州朗肽海本","广州龙狮","广州队"]},
+        {"id":"jilin-northeast-tigers","logo":"CBA/吉林长白山恩都里.png","aliases":["吉林长白山恩都里","吉林九台农商银行","吉林东北虎"]},
+        {"id":"jiangsu-dragons","logo":"CBA/江苏肯帝亚.png","aliases":["江苏肯帝亚","江苏龙"]},
+        {"id":"liaoning-flying-leopards","logo":"CBA/辽宁本钢.png","aliases":["辽宁本钢","辽宁飞豹"]},
+        {"id":"nanjing-monkey-kings","logo":"CBA/南京同曦宙光.png","aliases":["南京同曦宙光","南京头排苏酒","南京同曦"]},
+        {"id":"ningbo-rockets","logo":"CBA/宁波町渥.png","aliases":["宁波町渥","宁波富邦","宁波火箭"]},
+        {"id":"qingdao-eagles","logo":"CBA/青岛崂山啤酒.png","aliases":["青岛崂山啤酒","青岛国信制药","青岛双星"]},
+        {"id":"shandong-hi-speed","logo":"CBA/山东高速.png","aliases":["山东高速","山东男篮"]},
+        {"id":"shanxi-loongs","logo":"CBA/山西汾酒.png","aliases":["山西汾酒","山西国投","山西猛龙"]},
+        {"id":"shanghai-sharks","logo":"CBA/上海久事.png","aliases":["上海久事","上海大鲨鱼"]},
+        {"id":"shenzhen-leopards","logo":"CBA/深圳马可波罗.png","aliases":["深圳马可波罗","深圳新世纪"]},
+        {"id":"sichuan-blue-whales","logo":"CBA/四川锦城.png","aliases":["四川丰谷酒业","四川锦城","四川金强"]},
+        {"id":"tianjin-pioneers","logo":"CBA/天津先行者.png","aliases":["天津先行者","天津荣钢"]},
+        {"id":"xinjiang-flying-tigers","logo":"CBA/新疆飞虎.png","aliases":["新疆飞虎","新疆广汇"]},
+        {"id":"zhejiang-golden-bulls","logo":"CBA/浙江稠州银行.png","aliases":["浙江稠州银行","浙江金牛"]},
+        {"id":"zhejiang-lions","logo":"CBA/浙江广厦.png","aliases":["浙江广厦","浙江方兴渡","浙江雄狮"]}
+      ]
+    },    "nba": {
+      "name": "美国职业篮球联赛",
+      "clubs": [
+        {"id":"atlanta-hawks","logo":"NBA/8190_atlanta_hawks-primary-2021.png","aliases":["亚特兰大老鹰","Atlanta Hawks"]},
+        {"id":"boston-celtics","logo":"NBA/boston_celtics_logo_primary_19977628.png","aliases":["波士顿凯尔特人","Boston Celtics"]},
+        {"id":"brooklyn-nets","logo":"NBA/brooklyn_nets_logo_primary_2025_sportslogosnet-1501.png","aliases":["布鲁克林篮网","Brooklyn Nets"]},
+        {"id":"charlotte-hornets","logo":"NBA/1926_charlotte__hornets_-primary-2015.png","aliases":["夏洛特黄蜂","Charlotte Hornets"]},
+        {"id":"chicago-bulls","logo":"NBA/chicago_bulls_logo_primary_19672598.png","aliases":["芝加哥公牛","Chicago Bulls"]},
+        {"id":"cleveland-cavaliers","logo":"NBA/cleveland_cavaliers_logo_primary_2023_sportslogosnet-5369.png","aliases":["克利夫兰骑士","Cleveland Cavaliers"]},
+        {"id":"dallas-mavericks","logo":"NBA/3463_dallas_mavericks-primary-2018.png","aliases":["达拉斯独行侠","Dallas Mavericks"]},
+        {"id":"denver-nuggets","logo":"NBA/8926_denver_nuggets-primary-2019.png","aliases":["丹佛掘金","Denver Nuggets"]},
+        {"id":"detroit-pistons","logo":"NBA/detroit_pistons_logo_primary_20185710.png","aliases":["底特律活塞","Detroit Pistons"]},
+        {"id":"golden-state-warriors","logo":"NBA/3152_golden_state_warriors-primary-2020.png","aliases":["金州勇士","Golden State Warriors"]},
+        {"id":"houston-rockets","logo":"NBA/houston-rockets-logo-primary-2027-23098672027.png","aliases":["休斯敦火箭","Houston Rockets"]},
+        {"id":"indiana-pacers","logo":"NBA/indiana-pacers-logo-primary-2026-22496872026.png","aliases":["印第安纳步行者","Indiana Pacers"]},
+        {"id":"los-angeles-clippers","logo":"NBA/los_angeles_clippers_logo_primary_2025_sportslogosnet-5542.png","aliases":["洛杉矶快船","LA Clippers","Los Angeles Clippers"]},
+        {"id":"los-angeles-lakers","logo":"NBA/los_angeles_lakers_logo_primary_2024_sportslogosnet-7324.png","aliases":["洛杉矶湖人","LA Lakers","Los Angeles Lakers"]},
+        {"id":"memphis-grizzlies","logo":"NBA/4373_memphis_grizzlies-primary-2019.png","aliases":["孟菲斯灰熊","Memphis Grizzlies"]},
+        {"id":"miami-heat","logo":"NBA/Miami_Heat.png","aliases":["迈阿密热火","Miami Heat"]},
+        {"id":"milwaukee-bucks","logo":"NBA/milwaukee_bucks_logo_primary_20165763.png","aliases":["密尔沃基雄鹿","Milwaukee Bucks"]},
+        {"id":"minnesota-timberwolves","logo":"NBA/minnesota-timberwolves-logo-primary-2027-23230982027.png","aliases":["明尼苏达森林狼","Minnesota Timberwolves"]},
+        {"id":"new-orleans-pelicans","logo":"NBA/new_orleans_pelicans_logo_primary_2024_sportslogosnet-9292.png","aliases":["新奥尔良鹈鹕","New Orleans Pelicans"]},
+        {"id":"new-york-knicks","logo":"NBA/new_york_knicks_logo_primary_2024_sportslogosnet-7170.png","aliases":["纽约尼克斯","New York Knicks"]},
+        {"id":"oklahoma-city-thunder","logo":"NBA/Oklahoma City Thunder Logo.png","aliases":["俄克拉荷马城雷霆","俄克拉荷马雷霆","Oklahoma City Thunder","OKC Thunder"]},
+        {"id":"orlando-magic","logo":"NBA/orlando-magic-logo-primary-2026-21794952026.png","aliases":["奥兰多魔术","Orlando Magic"]},
+        {"id":"phoenix-suns","logo":"NBA/phoenix_suns_logo_primary_20143696.png","aliases":["菲尼克斯太阳","Phoenix Suns"]},
+        {"id":"portland-trail-blazers","logo":"NBA/9725_portland_trail_blazers-primary-2018.png","aliases":["波特兰开拓者","Portland Trail Blazers"]},
+        {"id":"sacramento-kings","logo":"NBA/4043_sacramento_kings-primary-2017.png","aliases":["萨克拉门托国王","Sacramento Kings"]},
+        {"id":"san-antonio-spurs","logo":"NBA/2547_san_antonio_spurs-primary-2018.png","aliases":["圣安东尼奥马刺","San Antonio Spurs"]},
+        {"id":"toronto-raptors","logo":"NBA/7024_toronto_raptors-primary-2021.png","aliases":["多伦多猛龙","Toronto Raptors"]},
+        {"id":"utah-jazz","logo":"NBA/utah-jazz-logo-primary-2026-1109.png","aliases":["犹他爵士","Utah Jazz"]},
+        {"id":"washington-wizards","logo":"NBA/washington-wizards-logo-primary-2016-8780.png","aliases":["华盛顿奇才","Washington Wizards"]},
+        {"id":"philadelphia-76ers","logo":"NBA/7034_philadelphia_76ers-primary-2016.png","aliases":["费城76人","Philadelphia 76ers"]}
+      ]
+    }
+  }
+}

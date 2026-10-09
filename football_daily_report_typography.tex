@@ -8,6 +8,7 @@
 \setlength{\parindent}{0pt}
 \raggedbottom
 \usepackage{adjustbox}
+\usepackage{graphicx}
 
 % 少量、语义明确的字号层级：赛事信息 / 队名 / 比分。
 \newfontfamily\ScoreFont{Arial}[Numbers=Monospaced,Scale=1.05]
@@ -26,10 +27,16 @@
   \renewcommand\headrule{\vspace{-0.7em}\tikzrule[BrickRed, path fading=east]{.5\textwidth}{0.3mm}}%
 }
 \newcommand{\TeamName}[1]{{\sffamily\bfseries\fontsize{11.8}{14}\selectfont #1}}
+\newcommand{\ClubWithLogo}[2]{\raisebox{-.16\height}{\includegraphics[height=1.2em]{#1}}\hspace{.35em}#2}
+\newcommand{\PlayerWithPortrait}[2]{\raisebox{-.29\height}{\includegraphics[height=2.05em]{#1}}\hspace{.3em}#2}
+\newcommand{\CompactPlayerWithPortrait}[2]{\raisebox{-.27\height}{\includegraphics[height=1.55em]{#1}}\hspace{.25em}#2}
 \newcommand{\ScoreBadge}[1]{\tcbox[on line,colback=BrickRed!9!white,colframe=BrickRed!58!black,
   boxrule=.35pt,arc=1.3pt,boxsep=1.3pt,left=2.5pt,right=2.5pt,top=1.3pt,bottom=1.3pt]
   {\ScoreFont\bfseries\fontsize{13.5}{15}\selectfont #1}}
 \newcommand{\VsMark}{{\sffamily\bfseries\fontsize{9.5}{12}\selectfont\textcolor{NavyBlue}{VS}}}
+\newcommand{\EventTitleWithLogo}[2]{%
+  \raisebox{-.27\height}{\includegraphics[height=2.15em]{#1}}\hspace{.7em}#2%
+}
 \newcommand{\FitTeam}[1]{\adjustbox{max width=\hsize}{\TeamName{#1}}}
 \newcommand{\CompactResultMeta}[1]{{\sffamily\footnotesize\color{ForestGreen!62!black}#1}}
 \newcommand{\CompactPreviewMeta}[2]{{\sffamily\footnotesize\color{TealBlue!72!black}#1\enspace
@@ -40,6 +47,9 @@
   boxrule=.35pt,arc=1.3pt,boxsep=1pt,left=2pt,right=2pt,top=1pt,bottom=1pt]
   {\ScoreFont\bfseries\fontsize{12}{13.5}\selectfont #1}}
 \newcommand{\CompactVsMark}{{\sffamily\bfseries\fontsize{9}{11}\selectfont\textcolor{NavyBlue}{VS}}}
+\newcommand{\CompactEventTitleWithLogo}[2]{%
+  \raisebox{-.22\height}{\includegraphics[height=1.72em]{#1}}\hspace{.55em}#2%
+}
 \newcommand{\ScoreLine}[3]{%
   \begin{tabularx}{\linewidth}{@{}>{\raggedleft\arraybackslash}X@{\hspace{3.5mm}}c@{\hspace{3.5mm}}>{\raggedright\arraybackslash}X@{}}
     \FitTeam{#1} & \ScoreBadge{#2} & \FitTeam{#3}
@@ -71,9 +81,12 @@
   \end{box1}%
 }
 
+\definecolor{FixtureHeaderBlue}{HTML}{2563EB}
+\definecolor{FixtureHeaderBlueDark}{HTML}{1D4ED8}
+\definecolor{FixtureFrameBlue}{HTML}{3B82F6}
 \newcommand{\FocusScheduleMatch}[4]{%
-  \begin{box1}[colback=TealBlue!5!white,colframe=TealBlue!65!black,
-    colbacktitle=TealBlue!78!black,interior style={fill=TealBlue!5!white},fonttitle=\footnotesize\sffamily,
+  \begin{box1}[colback=FixtureFrameBlue!5!white,colframe=FixtureFrameBlue!80!FixtureHeaderBlueDark,
+    colbacktitle=FixtureHeaderBlue,interior style={fill=FixtureFrameBlue!5!white},fonttitle=\footnotesize\sffamily,
     left=2.6mm,right=2.6mm,top=.8mm,bottom=.8mm]{#1\enspace #2}
     \centering\FixtureLine{#3}{#4}\par
   \end{box1}%
